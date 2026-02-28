@@ -1,386 +1,370 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vero Labs - AI-Powered Innovation</title>
+    <meta name="description" content="Building intelligent consumer applications and enabling businesses to harness AI as a competitive advantage.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-100px) translateX(50px); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+            overflow: visible;
+        }
+
+        .logo svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 18px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0; }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            display: inline-block;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 60px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .service {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease backwards;
+        }
+        
+        .service:nth-child(1) { animation-delay: 0.4s; }
+        .service:nth-child(2) { animation-delay: 0.5s; }
+        .service:nth-child(3) { animation-delay: 0.6s; }
+        
+        .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .service:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .service:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .service h3 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .service p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            animation: fadeInUp 1s ease 0.7s backwards;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .email-link {
+            display: inline-block;
+            padding: 18px 50px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .email-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #808080;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .hero { padding: 30px 20px; }
+            .hero p { font-size: 1.1rem; }
+            .service { padding: 30px 20px; }
+            .cta { padding: 40px 20px; }
+            .cta h2 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Vero Labs - AI-Powered Innovation&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Building intelligent consumer applications and enabling businesses to harness AI as a competitive advantage."&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1a1a2e;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.bg-animation {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.particle {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: float 15s infinite ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes float {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { transform: translateY(0) translateX(0); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: translateY(-100px) translateX(50px); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 60px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInDown 1s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeInDown {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(-30px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: visible;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo svg {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: shimmer 3s infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes shimmer {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: translateX(-100%) rotate(45deg); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: translateX(100%) rotate(45deg); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 110%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 110%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid rgba(102, 126, 234, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: pulse 2s infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes pulse {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { transform: scale(1); opacity: 0.5; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: scale(1.1); opacity: 0; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -2px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.tagline {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #e0e0e0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 60px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease 0.3s backwards;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeInUp {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(30px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #e0e0e0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.services {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 60px 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 25px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.4s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease backwards;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service:nth-child(1) { animation-delay: 0.4s; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service:nth-child(2) { animation-delay: 0.5s; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service:nth-child(3) { animation-delay: 0.6s; }</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 3px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(90deg, #667eea, #764ba2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scaleX(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.4s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: rgba(102, 126, 234, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service:hover::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scaleX(1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-icon {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #b0b0b0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 60px 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 60px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease 0.7s backwards;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-link {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 18px 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.email-link:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.05);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #808080;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>h1 { font-size: 2.5rem; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.tagline { font-size: 1.2rem; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero { padding: 30px 20px; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero p { font-size: 1.1rem; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.service { padding: 30px 20px; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.cta { padding: 40px 20px; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.cta h2 { font-size: 2rem; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bg-animation"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="particle" style="width: 3px; height: 3px; left: 10%; top: 20%; animation-delay: 0s;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="particle" style="width: 2px; height: 2px; left: 30%; top: 40%; animation-delay: 2s;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="particle" style="width: 4px; height: 4px; left: 50%; top: 60%; animation-delay: 4s;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="particle" style="width: 3px; height: 3px; left: 70%; top: 30%; animation-delay: 6s;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="particle" style="width: 2px; height: 2px; left: 80%; top: 70%; animation-delay: 8s;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="logo"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;path d="M50 10 L80 27.5 L80 62.5 L50 80 L20 62.5 L20 27.5 Z"<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                              </span>fill="none" stroke="white" stroke-width="3" opacity="0.3"/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                        </span></p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;circle cx="35" cy="35" r="4" fill="white"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;circle cx="65" cy="35" r="4" fill="white"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;circle cx="50" cy="70" r="5" fill="white"/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                        </span></p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;line x1="35" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;line x1="65" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                        </span></p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2.5" opacity="0.5"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1&gt;VERO LABS&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="tagline"&gt;Empowering Innovation Through AI&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>We build intelligent applications for consumers and provide strategic AI solutions<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>for businesses ready to transform. From concept to deployment, we turn AI potential<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>into measurable results.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="services"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-icon"&gt;🚀&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;BUILD&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Consumer applications powered by AI that solve real problems and create meaningful experiences for users worldwide.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-icon"&gt;⚡&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;ENABLE&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Strategic consulting and implementation services that help businesses harness AI as a competitive advantage in their market.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-icon"&gt;🎯&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;TRANSFORM&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;End-to-end solutions from strategy to deployment, turning AI potential into measurable business results and growth.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cta"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Ready to Innovate?&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="mailto:info@verolabs.io" class="email-link"&gt;info@verolabs.io&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;© 2026 Vero Labs LLC · Austin, Texas&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <div class="bg-animation">
+        <div class="particle" style="width: 3px; height: 3px; left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 2px; height: 2px; left: 30%; top: 40%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 50%; top: 60%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 3px; height: 3px; left: 70%; top: 30%; animation-delay: 6s;"></div>
+        <div class="particle" style="width: 2px; height: 2px; left: 80%; top: 70%; animation-delay: 8s;"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L80 27.5 L80 62.5 L50 80 L20 62.5 L20 27.5 Z" 
+                              fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+                        
+                        <circle cx="35" cy="35" r="4" fill="white"/>
+                        <circle cx="65" cy="35" r="4" fill="white"/>
+                        <circle cx="50" cy="70" r="5" fill="white"/>
+                        
+                        <line x1="35" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="65" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        
+                        <line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2.5" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h1>VERO LABS</h1>
+            </div>
+            <p class="tagline">Empowering Innovation Through AI</p>
+        </header>
+
+        <div class="hero">
+            <p>
+                We build intelligent applications for consumers and provide strategic AI solutions 
+                for businesses ready to transform. From concept to deployment, we turn AI potential 
+                into measurable results.
+            </p>
+        </div>
+
+        <div class="services">
+            <div class="service">
+                <div class="service-icon">🚀</div>
+                <h3>BUILD</h3>
+                <p>Consumer applications powered by AI that solve real problems and create meaningful experiences for users worldwide.</p>
+            </div>
+            
+            <div class="service">
+                <div class="service-icon">⚡</div>
+                <h3>ENABLE</h3>
+                <p>Strategic consulting and implementation services that help businesses harness AI as a competitive advantage in their market.</p>
+            </div>
+            
+            <div class="service">
+                <div class="service-icon">🎯</div>
+                <h3>TRANSFORM</h3>
+                <p>End-to-end solutions from strategy to deployment, turning AI potential into measurable business results and growth.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Ready to Innovate?</h2>
+            <a href="mailto:info@verolabs.io" class="email-link">info@verolabs.io</a>
+        </div>
+
+        <footer>
+            <p>© 2026 Vero Labs LLC · Austin, Texas</p>
+        </footer>
+    </div>
 </body>
 </html>
