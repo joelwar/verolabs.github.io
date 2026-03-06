@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeroTrip — AI Travel Planning by Vero Labs</title>
+    <meta name="description" content="VeroTrip is an AI-powered travel planning app by Vero Labs. Find flights, hotels, and build full itineraries — all in one place.">
+    <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+      (function () {
+          var script = document.createElement("script");
+          script.async = 1;
+          script.src = 'https://tpembars.com/NTA1MjAw.js?t=505200';
+          document.head.appendChild(script);
+      })();
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- Particles --- */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-100px) translateX(50px); }
+        }
+
+        /* --- Nav --- */
+        nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .nav-brand:hover { opacity: 1; }
+
+        .nav-brand svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        /* --- Container --- */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #a8b8ff;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .hero-badge span {
+            font-size: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #a0a0b8;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+        }
+
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* --- App Preview --- */
+        .app-preview {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3px;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .app-preview-inner {
+            background: linear-gradient(160deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.05));
+            border-radius: 22px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .mock-search {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mock-search-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mock-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mock-input .label {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .mock-input .value {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mock-input .icon {
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .mock-search-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 14px;
+            padding: 18px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Features --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 36px 30px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease backwards;
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.4s; }
+        .feature:nth-child(2) { animation-delay: 0.5s; }
+        .feature:nth-child(3) { animation-delay: 0.6s; }
+
+        .feature:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 16px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+        }
+
+        .feature h3 {
+            color: #fff;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #9090a8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- How It Works --- */
+        .how-it-works {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 1s ease 0.7s backwards;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .section-sub {
+            color: #8080a0;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4), rgba(118, 75, 162, 0.1));
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.35);
+            border: 4px solid #1a2a3a;
+        }
+
+        .step h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #8888a8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        /* --- CTA --- */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 28px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.35);
+            animation: fadeInUp 1s ease 0.8s backwards;
+            margin-bottom: 60px;
+        }
+
+        .cta h2 {
+            font-size: 2.4rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 44px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #606080;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #8080a0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover { color: #a8b8ff; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.6rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .features { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; gap: 30px; }
+            .steps::before { display: none; }
+            .mock-search-row { grid-template-columns: 1fr; }
+            .app-preview-inner { padding: 30px 20px; }
+            .cta { padding: 40px 24px; }
+            .cta h2 { font-size: 1.8rem; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="particle" style="width: 3px; height: 3px; left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 2px; height: 2px; left: 30%; top: 40%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 50%; top: 60%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 3px; height: 3px; left: 70%; top: 30%; animation-delay: 6s;"></div>
+        <div class="particle" style="width: 2px; height: 2px; left: 80%; top: 70%; animation-delay: 8s;"></div>
+        <div class="particle" style="width: 3px; height: 3px; left: 90%; top: 15%; animation-delay: 3s;"></div>
+        <div class="particle" style="width: 2px; height: 2px; left: 15%; top: 80%; animation-delay: 7s;"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-brand">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 L80 27.5 L80 62.5 L50 80 L20 62.5 L20 27.5 Z" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+                <circle cx="35" cy="35" r="4" fill="white"/>
+                <circle cx="65" cy="35" r="4" fill="white"/>
+                <circle cx="50" cy="70" r="5" fill="white"/>
+                <line x1="35" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="65" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2.5" opacity="0.5"/>
+            </svg>
+            Vero Labs
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="verotrip.html" style="color: #a8b8ff;">VeroTrip</a></li>
+            <li><a href="mailto:info@verolabs.io">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-badge">
+                <span>✈️</span> A Vero Labs Product
+            </div>
+            <h1><span class="gradient-text">VeroTrip</span></h1>
+            <p class="hero-sub">AI-powered travel planning that finds the best flights, hotels, and builds your perfect itinerary — all in one place.</p>
+            <a href="mailto:info@verolabs.io" class="hero-cta">
+                Get Early Access
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <!-- App Preview Mock -->
+        <div class="app-preview">
+            <div class="app-preview-inner">
+                <div class="mock-search">
+                    <div class="mock-search-row">
+                        <div class="mock-input">
+                            <div>
+                                <div class="label">From</div>
+                                <div class="value">Austin, TX (AUS)</div>
+                            </div>
+                        </div>
+                        <div class="mock-input">
+                            <div>
+                                <div class="label">To</div>
+                                <div class="value">Tokyo, Japan (NRT)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-search-row">
+                        <div class="mock-input">
+                            <div>
+                                <div class="label">Depart</div>
+                                <div class="value">Jun 15, 2026</div>
+                            </div>
+                        </div>
+                        <div class="mock-input">
+                            <div>
+                                <div class="label">Return</div>
+                                <div class="value">Jun 28, 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-search-btn">
+                        🔍 &nbsp;Search with AI
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✈️</div>
+                <h3>Smart Flights</h3>
+                <p>Compare prices across multiple airlines and find the best deals. Our AI spots hidden savings and optimal routes.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏨</div>
+                <h3>Perfect Stays</h3>
+                <p>Handpicked hotel recommendations matched to your preferences, budget, and travel style. No more endless scrolling.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🗺️</div>
+                <h3>AI Itineraries</h3>
+                <p>Get a complete day-by-day travel plan tailored to your interests, pace, and the local gems most travelers miss.</p>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-sub">Three steps to your perfect trip.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Tell Us Where</h4>
+                    <p>Enter your destination, dates, and travel preferences. Or let the AI suggest based on your interests.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>AI Plans It</h4>
+                    <p>VeroTrip searches flights, compares hotels, and builds a day-by-day itinerary customized for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Book &amp; Go</h4>
+                    <p>Review your plan, book everything in one place, and hit the road with confidence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <h2>Your Next Trip, Planned in Seconds</h2>
+            <p>Be the first to experience AI-powered travel planning.</p>
+            <a href="mailto:info@verolabs.io" class="cta-btn">
+                Request Early Access
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Vero Labs Inc · Austin, Texas · <a href="index.html">verolabs.io</a></p>
+    </footer>
+</body>
+</html>
