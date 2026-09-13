@@ -1,532 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vero Labs - AI-Powered Innovation</title>
-    <meta name="description" content="Building intelligent consumer applications and enabling businesses to harness AI as a competitive advantage.">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .bg-animation {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-100px) translateX(50px); }
-        }
-
-        /* --- Nav --- */
-        nav {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 20px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1rem;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .nav-brand:hover { opacity: 1; }
-
-        .nav-brand svg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: #fff; }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: fadeInDown 1s ease;
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
-            overflow: visible;
-        }
-
-        .logo svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        .logo::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            width: 110%;
-            height: 110%;
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 18px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0; }
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-            display: inline-block;
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            color: #e0e0e0;
-            margin-top: 10px;
-            font-weight: 300;
-        }
-        
-        .hero {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            margin-bottom: 60px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease 0.3s backwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: #e0e0e0;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        
-        .service {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 25px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1s ease backwards;
-        }
-        
-        .service:nth-child(1) { animation-delay: 0.4s; }
-        .service:nth-child(2) { animation-delay: 0.5s; }
-        .service:nth-child(3) { animation-delay: 0.6s; }
-        
-        .service::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .service:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-        }
-        
-        .service:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 2.5rem;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        
-        .service h3 {
-            color: #ffffff;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .service p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* --- Products Section --- */
-        .products-section {
-            margin: 60px 0;
-            text-align: center;
-            animation: fadeInUp 1s ease 0.65s backwards;
-        }
-
-        .products-section h2 {
-            font-size: 2.2rem;
-            color: #fff;
-            font-weight: 700;
-            margin-bottom: 30px;
-            letter-spacing: -1px;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            text-decoration: none;
-            transition: all 0.4s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.4);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
-        }
-
-        .product-icon {
-            width: 72px;
-            height: 72px;
-            min-width: 72px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .product-info {
-            text-align: left;
-        }
-
-        .product-info h3 {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .product-info p {
-            color: #9090a8;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .product-link {
-            color: #a8b8ff;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .cta {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 40px;
-            border-radius: 30px;
-            text-align: center;
-            margin: 60px 0;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
-            animation: fadeInUp 1s ease 0.7s backwards;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .email-link {
-            display: inline-block;
-            padding: 18px 50px;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .email-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #808080;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .tagline { font-size: 1.2rem; }
-            .hero { padding: 30px 20px; }
-            .hero p { font-size: 1.1rem; }
-            .service { padding: 30px 20px; }
-            .cta { padding: 40px 20px; }
-            .cta h2 { font-size: 2rem; }
-            .product-card { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .product-info { text-align: center; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vero Labs helps enterprises turn complex operations, product ideas, and AI opportunities into useful, scalable solutions.">
+  <meta name="theme-color" content="#071810">
+  <title>Vero Labs — Enterprise solutions, built to move</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#071810; --paper:#f5f5ee; --lime:#c8f045; --mint:#b9eee0; --muted:#a8bab1; --line:rgba(238,249,238,.18); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Manrope,Arial,sans-serif; }
+    a { color:inherit; }
+    .shell { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    .eyebrow { font:500 11px/1.1 "DM Mono",monospace; letter-spacing:.13em; text-transform:uppercase; }
+    .button { display:inline-flex; align-items:center; gap:13px; padding:15px 20px; border-radius:100px; background:var(--lime); color:var(--ink); font-size:14px; font-weight:800; text-decoration:none; transition:transform .2s, background .2s; }
+    .button:hover { transform:translateY(-2px); background:#d7ff58; }
+    .button svg { width:16px; height:16px; }
+    .button--dark { background:var(--ink); color:#fff; }
+    .button--dark:hover { background:#163b2a; }
+    .nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0; position:relative; z-index:1; }
+    .brand { display:flex; align-items:center; gap:10px; font-size:16px; font-weight:800; letter-spacing:-.04em; text-decoration:none; }
+    .mark { width:27px; height:27px; display:grid; place-items:center; color:var(--lime); background:var(--ink); border-radius:8px 8px 8px 2px; font:800 15px/1 Georgia,serif; }
+    .nav-links { display:flex; gap:27px; align-items:center; font-size:13px; font-weight:700; }
+    .nav-links a { color:#526359; text-decoration:none; }
+    .nav-links a:hover { color:var(--ink); }
+    .nav-contact { padding:10px 15px; color:var(--ink)!important; border:1px solid #b9c9bd; border-radius:100px; }
+    .hero-wrap { background:var(--ink); color:#f7fbf7; overflow:hidden; }
+    .hero { min-height:690px; position:relative; padding:53px 0 54px; display:flex; flex-direction:column; justify-content:space-between; }
+    .hero::before { content:""; position:absolute; width:700px; height:700px; top:-380px; right:-235px; border-radius:50%; background:radial-gradient(circle,rgba(200,240,69,.28) 0,rgba(200,240,69,.08) 33%,transparent 68%); }
+    .hero::after { content:""; position:absolute; width:460px; height:460px; right:8%; bottom:-250px; background:radial-gradient(circle,rgba(108,235,184,.19),transparent 68%); border-radius:50%; }
+    .hero-top, .hero-bottom { position:relative; z-index:1; }
+    .hero-top { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:start; }
+    .hero-kicker { color:var(--lime); }
+    h1 { max-width:955px; margin:42px 0 29px; font-size:clamp(3.45rem,8vw,7rem); line-height:.98; letter-spacing:-.075em; font-weight:800; }
+    h1 em { color:var(--lime); font-style:normal; }
+    .hero-copy { max-width:500px; margin:0; color:#cad6cf; font-size:18px; line-height:1.65; }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:30px; }
+    .hero-note { color:var(--muted); font:400 11px/1.55 "DM Mono",monospace; max-width:190px; }
+    .orbit { width:188px; height:188px; position:relative; border:1px solid var(--line); border-radius:50%; animation:spin 22s linear infinite; }
+    .orbit::before, .orbit::after { content:""; position:absolute; border-radius:50%; background:var(--lime); }
+    .orbit::before { width:10px; height:10px; top:18px; right:31px; box-shadow:0 0 0 8px rgba(200,240,69,.12); }
+    .orbit::after { width:5px; height:5px; bottom:29px; left:13px; background:var(--mint); }
+    .orbit span { position:absolute; inset:28px; border:1px dashed rgba(238,249,238,.24); border-radius:50%; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .proof { display:grid; grid-template-columns:1.4fr repeat(3,1fr); border-bottom:1px solid #d5ddd5; }
+    .proof > div { min-height:146px; padding:29px 28px; border-left:1px solid #d5ddd5; }
+    .proof > div:first-child { padding-left:0; border-left:0; }
+    .proof-number { margin:8px 0 2px; font-size:44px; font-weight:800; letter-spacing:-.07em; line-height:1; }
+    .proof p { margin:0; color:#526359; font-size:13px; line-height:1.55; }
+    .section { padding:118px 0; }
+    .section-heading { display:grid; grid-template-columns:220px 1fr; gap:55px; margin-bottom:55px; }
+    h2 { margin:0; max-width:790px; font-size:clamp(2.3rem,4.7vw,4.4rem); line-height:1.04; letter-spacing:-.07em; }
+    .section-intro { max-width:630px; margin:25px 0 0; color:#526359; font-size:17px; line-height:1.7; }
+    .services { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid #cbd4cb; }
+    .service { min-height:325px; padding:24px 22px 20px; border-right:1px solid #cbd4cb; border-bottom:1px solid #cbd4cb; transition:background .25s; }
+    .service:first-child { border-left:1px solid #cbd4cb; }
+    .service:hover { background:#e9eee7; }
+    .service-number { color:#699042; }
+    .service h3 { margin:83px 0 11px; font-size:20px; letter-spacing:-.045em; }
+    .service p { margin:0; color:#5b6c62; font-size:13px; line-height:1.65; }
+    .path { background:#dceddd; padding:105px 0; }
+    .path-grid { display:grid; grid-template-columns:220px 1fr; gap:55px; }
+    .steps { counter-reset:step; }
+    .step { display:grid; grid-template-columns:52px 1fr auto; gap:25px; align-items:baseline; padding:25px 0; border-top:1px solid #a8bdac; }
+    .step:last-child { border-bottom:1px solid #a8bdac; }
+    .step::before { counter-increment:step; content:"0" counter(step); color:#52715d; font:500 12px "DM Mono",monospace; }
+    .step h3 { margin:0; font-size:22px; letter-spacing:-.04em; }
+    .step p { max-width:310px; margin:0; color:#52715d; font-size:13px; line-height:1.65; }
+    .work { padding-bottom:118px; }
+    .feature { display:grid; grid-template-columns:1.17fr .83fr; min-height:375px; background:var(--ink); color:#fff; overflow:hidden; }
+    .feature-copy { padding:45px; display:flex; flex-direction:column; justify-content:space-between; }
+    .feature h3 { max-width:500px; margin:0; font-size:35px; line-height:1.13; letter-spacing:-.065em; }
+    .feature-copy p { color:#b4c6ba; font-size:14px; line-height:1.65; max-width:440px; }
+    .feature-visual { min-height:300px; position:relative; background:linear-gradient(145deg,#406c53,#173c2c); overflow:hidden; }
+    .feature-visual::before { content:""; position:absolute; width:390px; height:390px; left:50%; top:50%; transform:translate(-50%,-50%); border:1px solid rgba(255,255,255,.32); border-radius:50%; box-shadow:0 0 0 50px rgba(255,255,255,.05),0 0 0 100px rgba(255,255,255,.04); }
+    .feature-visual::after { content:"AI"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); color:var(--lime); font-size:86px; font-weight:800; letter-spacing:-.12em; }
+    .feature-label { position:absolute; bottom:23px; right:26px; z-index:1; color:#d5e3d8; }
+    .contact { background:var(--lime); padding:108px 0 38px; }
+    .contact h2 { max-width:950px; font-size:clamp(3rem,6vw,5.5rem); }
+    .contact-row { margin-top:62px; padding-top:20px; border-top:1px solid rgba(7,24,16,.25); display:flex; justify-content:space-between; align-items:center; gap:25px; }
+    .email { color:var(--ink); font-size:clamp(1.25rem,3vw,2.15rem); font-weight:800; letter-spacing:-.06em; text-decoration:none; border-bottom:2px solid var(--ink); }
+    .email:hover { opacity:.65; }
+    footer { background:var(--lime); padding:0 0 29px; color:#365a40; font:400 11px "DM Mono",monospace; }
+    footer .shell { display:flex; justify-content:space-between; gap:20px; }
+    @media (max-width:780px) {
+      .shell { width:min(100% - 32px, 1180px); }.nav-links a:not(.nav-contact) { display:none; }.hero { min-height:655px; padding-top:35px; } h1 { margin-top:34px; }.hero-bottom { align-items:end; }.orbit { width:125px; height:125px; }.orbit span { inset:20px; }
+      .proof { grid-template-columns:1fr 1fr; }.proof > div { border-top:1px solid #d5ddd5; }.proof > div:first-child { grid-column:1 / -1; }.section-heading, .path-grid { grid-template-columns:1fr; gap:20px; }.section { padding:80px 0; }.services { grid-template-columns:1fr 1fr; }.service:nth-child(3) { border-left:1px solid #cbd4cb; }.service h3 { margin-top:50px; }.path { padding:80px 0; }.step { grid-template-columns:37px 1fr; gap:14px; }.step p { grid-column:2; }.feature { grid-template-columns:1fr; }.feature-copy { padding:32px; min-height:310px; }.feature-visual { min-height:225px; }.contact { padding-top:78px; }.contact-row, footer .shell { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width:430px) { .services { grid-template-columns:1fr; }.service, .service:nth-child(3) { border-left:1px solid #cbd4cb; }.proof { grid-template-columns:1fr; }.proof > div:first-child { grid-column:auto; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; scroll-behavior:auto!important; } }
+  </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <div class="particle" style="width: 3px; height: 3px; left: 10%; top: 20%; animation-delay: 0s;"></div>
-        <div class="particle" style="width: 2px; height: 2px; left: 30%; top: 40%; animation-delay: 2s;"></div>
-        <div class="particle" style="width: 4px; height: 4px; left: 50%; top: 60%; animation-delay: 4s;"></div>
-        <div class="particle" style="width: 3px; height: 3px; left: 70%; top: 30%; animation-delay: 6s;"></div>
-        <div class="particle" style="width: 2px; height: 2px; left: 80%; top: 70%; animation-delay: 8s;"></div>
-    </div>
-
-    <nav>
-        <a href="index.html" class="nav-brand">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 10 L80 27.5 L80 62.5 L50 80 L20 62.5 L20 27.5 Z" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
-                <circle cx="35" cy="35" r="4" fill="white"/>
-                <circle cx="65" cy="35" r="4" fill="white"/>
-                <circle cx="50" cy="70" r="5" fill="white"/>
-                <line x1="35" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                <line x1="65" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                <line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2.5" opacity="0.5"/>
-            </svg>
-            Vero Labs
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html" style="color: #a8b8ff;">Home</a></li>
-            <li><a href="verotrip.html">VeroTrip</a></li>
-            <li><a href="mailto:info@verolabs.io">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <div class="logo">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 10 L80 27.5 L80 62.5 L50 80 L20 62.5 L20 27.5 Z" 
-                              fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
-                        
-                        <circle cx="35" cy="35" r="4" fill="white"/>
-                        <circle cx="65" cy="35" r="4" fill="white"/>
-                        <circle cx="50" cy="70" r="5" fill="white"/>
-                        
-                        <line x1="35" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                        <line x1="65" y1="35" x2="50" y2="70" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                        
-                        <line x1="35" y1="35" x2="65" y2="35" stroke="white" stroke-width="2.5" opacity="0.5"/>
-                    </svg>
-                </div>
-                <h1>VERO LABS</h1>
-            </div>
-            <p class="tagline">Empowering Innovation Through AI</p>
-        </header>
-
-        <div class="hero">
-            <p>
-                We build intelligent applications for consumers and provide strategic AI solutions 
-                for businesses ready to transform. From concept to deployment, we turn AI potential 
-                into measurable results.
-            </p>
-        </div>
-
-        <div class="services">
-            <div class="service">
-                <div class="service-icon">🚀</div>
-                <h3>BUILD</h3>
-                <p>Consumer applications powered by AI that solve real problems and create meaningful experiences for users worldwide.</p>
-            </div>
-            
-            <div class="service">
-                <div class="service-icon">⚡</div>
-                <h3>ENABLE</h3>
-                <p>Strategic consulting and implementation services that help businesses harness AI as a competitive advantage in their market.</p>
-            </div>
-            
-            <div class="service">
-                <div class="service-icon">🎯</div>
-                <h3>TRANSFORM</h3>
-                <p>End-to-end solutions from strategy to deployment, turning AI potential into measurable business results and growth.</p>
-            </div>
-        </div>
-
-        <!-- Products -->
-        <div class="products-section">
-            <h2>Our Products</h2>
-            <a href="verotrip.html" class="product-card">
-                <div class="product-icon">✈️</div>
-                <div class="product-info">
-                    <h3>VeroTrip</h3>
-                    <p>AI-powered travel planning — find flights, hotels, and build complete itineraries in seconds.</p>
-                    <div class="product-link">Learn more →</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="cta">
-            <h2>Ready to Innovate?</h2>
-            <a href="mailto:info@verolabs.io" class="email-link">info@verolabs.io</a>
-        </div>
-
-        <footer>
-            <p>© 2026 Vero Labs LLC · Austin, Texas</p>
-        </footer>
-    </div>
+  <main>
+    <section class="hero-wrap">
+      <div class="shell nav"><a class="brand" href="#top" aria-label="Vero Labs home"><span class="mark">V</span> VERO LABS</a><div class="nav-links"><a href="#services">Services</a><a href="#approach">Approach</a><a href="https://verotrip.app" target="_blank" rel="noopener noreferrer">VeroTrip</a><a class="nav-contact" href="#contact">Let’s talk</a></div></div>
+      <div id="top" class="shell hero"><div class="hero-top"><div><p class="eyebrow hero-kicker">Independent enterprise technology partner</p><h1>Complex work, made <em>useful.</em></h1><p class="hero-copy">Vero Labs helps organizations turn ambitious ideas into practical systems, smarter operations, and AI-enabled products that people actually use.</p></div><a class="button" href="#contact">Start a conversation <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div><div class="hero-bottom"><p class="hero-note">Strategy through delivery<br>for the work that matters.</p><div class="orbit" aria-hidden="true"><span></span></div></div></div>
+    </section>
+    <section class="shell proof" aria-label="Experience highlights"><div><p class="eyebrow">A seasoned point of view</p><p style="font-size:18px;color:#173c2c;max-width:260px;margin-top:10px;font-weight:700;line-height:1.35">Built for leaders who need progress, not more complexity.</p></div><div><div class="proof-number">20+</div><p>years shaping enterprise solutions</p></div><div><div class="proof-number">4</div><p>connected disciplines, one accountable partner</p></div><div><div class="proof-number">1:1</div><p>senior attention from first conversation to launch</p></div></section>
+    <section id="services" class="shell section"><div class="section-heading"><p class="eyebrow">What I help solve</p><div><h2>From stuck processes to products with momentum.</h2><p class="section-intro">Bring a business challenge, a promising idea, or a pile of disconnected tools. Together, we’ll create a path from opportunity to an outcome your team can build on.</p></div></div><div class="services"><article class="service"><p class="eyebrow service-number">01</p><h3>Enterprise solutions</h3><p>Clarify needs, align stakeholders, and design durable systems around how the business really works.</p></article><article class="service"><p class="eyebrow service-number">02</p><h3>Process automation</h3><p>Find the manual friction, connect the moving parts, and free teams to focus on higher-value work.</p></article><article class="service"><p class="eyebrow service-number">03</p><h3>Product development</h3><p>Shape useful digital products—from initial discovery and roadmap through delivery and iteration.</p></article><article class="service"><p class="eyebrow service-number">04</p><h3>Enterprise AI integration</h3><p>Put AI to work responsibly inside real workflows, with the right data, guardrails, and adoption plan.</p></article></div></section>
+    <section id="approach" class="path"><div class="shell path-grid"><div><p class="eyebrow">How we work</p><h2 style="font-size:38px;margin-top:15px">Clear thinking. Forward motion.</h2></div><div class="steps"><article class="step"><h3>Frame the opportunity</h3><p>Define the problem worth solving, the people it affects, and what success looks like.</p></article><article class="step"><h3>Focus the solution</h3><p>Turn ideas into an achievable plan—priorities, architecture, risks, and a route to value.</p></article><article class="step"><h3>Make it real</h3><p>Deliver the solution and equip your team to run, learn from, and extend it.</p></article></div></div></section>
+    <section class="shell section work"><div class="section-heading"><p class="eyebrow">Product lab</p><div><h2>Practice what I preach.</h2><p class="section-intro">Vero Labs also builds its own products. That hands-on work keeps the approach grounded in the realities of shipping useful software.</p></div></div><a class="feature" href="https://verotrip.app" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><div class="feature-copy"><div><p class="eyebrow" style="color:var(--lime)">Featured product</p><h3 style="margin-top:19px">VeroTrip makes travel planning feel effortless.</h3></div><p>Explore the AI-powered travel companion for building better trips, faster.</p></div><div class="feature-visual"><span class="eyebrow feature-label">Visit VeroTrip ↗</span></div></a></section>
+    <section id="contact" class="contact"><div class="shell"><p class="eyebrow">Have a consequential problem to solve?</p><h2 style="margin-top:19px">Let’s make the next move a smart one.</h2><div class="contact-row"><a class="email" href="mailto:info@verolabs.io">info@verolabs.io</a><a class="button button--dark" href="mailto:info@verolabs.io?subject=Vero%20Labs%20inquiry">Send an email <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></section>
+  </main>
+  <footer><div class="shell"><span>© 2026 Vero Labs LLC</span><span>Austin, Texas · Built with intent</span></div></footer>
 </body>
 </html>
