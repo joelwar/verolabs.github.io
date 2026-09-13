@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vero Labs">
+  <rect width="64" height="64" rx="18" fill="#071810"/>
+  <path d="M14 13h14l8 28 8-28h12L42 51H29L14 13Z" fill="#c8f045"/>
+  <path d="M50 48c-7 7-20 8-28 1 9 2 20 0 28-8v7Z" fill="#b9eee0" opacity=".72"/>
+</svg>
